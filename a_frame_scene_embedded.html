@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A-Frame GLTF Scene</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aframe-orbit-controls-component@1.3.0/dist/aframe-orbit-controls-component.min.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; background: #101418; }
+    .hint { position: fixed; left: 12px; bottom: 12px; color: #e8eef5; font: 14px/1.4 Arial, sans-serif; background: rgba(0,0,0,.45); padding: 10px 12px; border-radius: 10px; z-index: 2; }
+  </style>
+</head>
+<body>
+  <div class="hint">ЛКМ — вращение, колесо — приближение, ПКМ — панорама</div>
+  <a-scene renderer="colorManagement: true; physicallyCorrectLights: true; antialias: true" background="color: #111827">
+    <a-assets>
+      <a-asset-item id="model" src="Untitled.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-entity light="type: ambient; intensity: 0.9"></a-entity>
+    <a-entity light="type: directional; intensity: 1.2" position="2 4 3"></a-entity>
+    <a-entity light="type: directional; intensity: 0.6" position="-3 2 -2"></a-entity>
+
+    <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#202733" shadow="receive: true"></a-plane>
+    <a-entity gltf-model="#model" position="0 0.05 0" rotation="0 0 0" scale="1 1 1" shadow="cast: true; receive: true"></a-entity>
+
+    <a-entity camera orbit-controls="target: 0 0.8 0; minDistance: 1; maxDistance: 15; initialPosition: 4 2.2 5; enableDamping: true; dampingFactor: 0.12"></a-entity>
+  </a-scene>
+</body>
+</html>
